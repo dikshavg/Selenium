@@ -1,0 +1,114 @@
+**WEBDRIVER METHODS:
+
+1)get(String url):
+
+package webdrivermethods;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.opentelemetry.sdk.metrics.internal.exemplar.AlwaysOffFilter;
+
+public class TolearnGet {
+	public static void main(String[] args) {
+		WebDriver driver= new ChromeDriver();
+		driver.get("https://www.sheinindia.in/");
+		
+	}
+		
+	}
+=======================================================================================================================
+2)get Title():
+
+package webdrivermethods;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TolearnGetTitle {
+public static void main(String[] args) {
+	WebDriver driver= new ChromeDriver();
+	driver.get("https://www.sheinindia.in/");
+	
+	String title = driver.getTitle();
+	System.out.println(title);
+	
+	if(title.equals("SHEIN Fast Fashion Accessible to All"))
+	{
+		System.out.println("Homepage should displayed");
+	}
+		else
+		{
+			System.out.println("Homepage is not displayed");
+		}
+	
+}
+}
+=======================================================================================================================
+3)getCurrentUrl():
+
+package webdrivermethods;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TolearnGetCurrentUrl {
+public static void main(String[] args) {
+	WebDriver driver = new ChromeDriver();
+	driver.get("https://www.flipkart.com/");
+	
+	String title = driver.getTitle();
+	System.out.println(title);
+	
+	if(title.equals("Online Shopping India Mobile, Cameras, Lifestyle & more Online @ Flipkart.com"))
+	{
+		System.out.println("Homepage is displayed");
+	}
+		else
+		{
+			System.out.println("Homepage is not displayed");
+		}
+	
+}
+}
+======================================================================================================================
+4)getPageSurce():
+
+package webdrivermethods;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+
+public class TolearnGetPageSource {
+	public static void main(String[] args) {
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.sheinindia.in/");
+		String sourcecode = driver.getPageSource();
+		System.out.println(sourcecode);
+	}
+
+}
+========================================================================================================================
+5)CloseAndQuit():
+
+package webdrivermethods;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TolearnCloseAndQuit {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://shoppersstack.com/products_page/34");
+		Thread.sleep(30000);
+		driver.findElement(By.id("compare")).click();
+		driver.close();
+		 
+		//driver.quit();
+		
+	}
+
+}
