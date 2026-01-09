@@ -1,0 +1,164 @@
+11)navigate():
+
+package webdrivermethods;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TolearnNavigate {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.flipkart.com/");
+		driver.manage().window().maximize();
+		
+		driver.navigate().back();
+		
+		Thread.sleep(2000);
+		
+		driver.navigate().forward();
+		
+		Thread.sleep(2000);
+		
+		driver.navigate().refresh();
+		
+		driver.navigate().to("https://www.ajio.com/");
+		
+		//driver.navigate().to(new url("https://www.ajio.com/"));
+		
+		
+		
+	}
+
+}
+==========================================================================================================================
+12)getWindowHandle():
+
+package webdrivermethods;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TolearnGetWindowHandle {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		
+		driver.get("https://shoppersstack.com/products_page/34");
+		Thread.sleep(15000);
+		
+		driver.findElement(By.id("compare")).click();
+		
+		String windowid = driver.getWindowHandle();
+		System.out.println(windowid);
+	}
+
+}
+============================================================================================================
+13)getWindowHandles():
+
+package webdrivermethods;
+
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TolearnGetWindowHandles {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver= new ChromeDriver();
+		
+		driver.get("https://shoppersstack.com/products_page/34");
+		Thread.sleep(15000);
+		
+		driver.findElement(By.id("compare")).click();
+		
+		 Set<String> allwindowIDs = driver.getWindowHandles();
+		for(String id:allwindowIDs)
+		{
+			
+			System.out.println(id);
+		}
+	}
+
+}
+
+===============================================================================================================
+14)SwitTo():
+
+package webdrivermethods;
+
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TolearnSwitchTo {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://shoppersstack.com/products_page/34");
+		Thread.sleep(15000);
+		
+		driver.findElement(By.id("compare")).click();
+		Set<String> allWindowsIds = driver.getWindowHandles();
+		
+		for(String id:allWindowsIds)
+		{
+			driver.switchTo().window(id);
+			String url = driver.getCurrentUrl();
+		
+		if(url.equals("https://www.amazon.in/"))
+			driver.manage().window().minimize();
+		
+		else if(url.equals("https://www.ebay.com/"))
+			driver.manage().window().maximize();
+		
+		else if(url.equals("https://www.flipkart.com/"))
+			driver.quit();
+	}
+
+}
+}
+===================================================================================================================
+15)SwitchTO with break:
+
+package webdrivermethods;
+
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TolearnSwitchwithbreak {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.myntra.com/");
+		
+		//driver.findElement(By.id("compare")).click();
+		Set<String> allWindowsIds = driver.getWindowHandles();
+		
+		for(String id:allWindowsIds)
+		{
+			driver.switchTo().window(id);
+			String url = driver.getCurrentUrl();
+		
+		if(url.equals("https://www.myntra.com/"))
+			//driver.manage().window().maximize();
+			//Thread.sleep(15000);
+		
+		//if(url.equals("https://www.myntra.com/"))
+			
+		break;
+		
+	}
+		driver.manage().window().maximize();
+		Thread.sleep(19000);
+		driver.manage().window().minimize();
+
+}
+}
