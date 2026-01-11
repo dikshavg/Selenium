@@ -1,0 +1,54 @@
+Assignment1:->
+================
+1)Open redbus  application in the maximum mode:
+
+->Verify homepage is displayed or not
+->Prime the height and width
+->Change x and y co ordinates to (-3,-3)
+->Perform back,forward and refresh
+->Print the URL
+->close using quit()
+========================================================================================================
+package assignment;
+
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Redbus {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		
+		driver.get("https://www.redbus.in/");
+		
+		String title = driver.getTitle();
+		System.out.println(title);
+		if(title.equals("Bus Booking Online and Train Tickets at Lowest Price - redBus"))
+		{
+			System.out.println("Homepage should displayed");
+		}
+			else
+			{
+				System.out.println("Homepage is not displayed");
+			}
+		
+		int Height = driver.manage().window().getSize().getHeight();
+		System.out.println(Height);
+		 int width = driver.manage().window().getSize().getWidth();
+		 System.out.println(width);
+		 
+		 driver.manage().window().setPosition(new Point (-3,-3));
+		 Thread.sleep(2000);
+		 
+		 driver.navigate().back();
+		 Thread.sleep(2000);
+		 driver.navigate().forward();
+		 Thread.sleep(2000);
+		 driver.navigate().refresh();
+		 
+		 String url = driver.getCurrentUrl();
+		 System.out.println(url);
+		
+	}
+	}
