@@ -1,0 +1,44 @@
+Assignment2:->
+===============
+2)Visit "Flipkart.com"
+->Enter "mobiles" in serachBox
+->click on searchicon
+->click on first mobiles Bankoffer
+->click on BuyNow button
+===========================================================================================
+package assignment;
+
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Filpkart {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.flipkart.com/");
+		
+				//enter mobile in search box
+				driver.findElement(By.xpath("//input[contains(@title,'Search for Products')]")).sendKeys("mobile");
+				Thread.sleep(3000);
+				
+				//click on search icon
+				driver.findElement(By.xpath("//button[@class='kV1UjG']")).click();
+				
+				//click on first mobile's  BankOffer
+				driver.findElement(By.xpath("(//div[contains(text(),'Bank')])[1]")).click();
+				Set<String> allWindowIds = driver.getWindowHandles();
+				for(String id : allWindowIds)
+				{
+					driver.switchTo().window(id);
+					
+				}
+				
+				//click on BuyNow
+				driver.findElement(By.xpath("//button[@type='button']")).click();
+		             
+				
+			}
+}
