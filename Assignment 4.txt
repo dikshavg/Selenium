@@ -1,0 +1,44 @@
+Assignment 4:
+=============
+->open "https://demowebshop.tricentis.com/login"
+->click on login
+->enter the date click on login
+->click on register link
+->enter the date click on register
+===========================================================
+package assignment;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class DemowebShop {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demowebshop.tricentis.com/login");
+		
+		//login
+		driver.findElement(By.className("ico-login")).click();
+		driver.findElement(By.id("Email")).sendKeys("diksha@123");
+		driver.findElement(By.id("Password")).sendKeys("dikshavg1234");
+		driver.findElement(By.className("login-button")).click();
+		
+		Thread.sleep(2000);
+		
+		
+		//Register
+		driver.findElement(By.className("ico-register")).click();
+		driver.findElement(By.id("gender-female")).click();
+		driver.findElement(By.id("FirstName")).sendKeys("Diksha");
+		driver.findElement(By.id("LastName")).sendKeys("Diksha");
+		driver.findElement(By.id("Email")).sendKeys("dvg@gmail.com");
+		driver.findElement(By.id("Password")).sendKeys("diksha@156");
+		driver.findElement(By.id("ConfirmPassword")).sendKeys("diksha@156");
+		driver.findElement(By.className("register-next-step-button")).click();
+		
+		
+	}
+
+}
+	
