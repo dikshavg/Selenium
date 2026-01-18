@@ -1,0 +1,64 @@
+Assignment 5:
+=============
+->Go to redbus.in
+->verify the homepage is displayed or not
+->print the count of images on webpage
+->click on Train ticket
+->click on Train Running status
+->click on profile icon
+->click on signup/sigin
+-.Enter one phonenumber in the textfield
+======================================================
+package assignment;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Redbus1 {
+public static void main(String[] args) throws InterruptedException {
+	WebDriver driver = new ChromeDriver();
+	driver.manage().window().maximize();
+	
+	driver.get("https://www.redbus.in/");
+	
+	//homepage display
+	String title = driver.getTitle();
+	System.out.println(title);
+	if(title.equals("Bus Booking Online and Train Tickets at Lowest Price - redBus"))
+	{
+		System.out.println("Homepage should displayed");
+	}
+		else
+		{
+			System.out.println("Homepage is not displayed");
+		}
+	
+	//count the images
+	 List<WebElement> images = driver.findElements(By.tagName("img"));
+	 System.out.println(images.size());
+	 
+	 //click on Train Ticket
+	 Thread.sleep(2000);
+	 driver.findElement(By.linkText("train ticket booking")).click();
+	 Thread.sleep(2000);
+	driver.findElement(By.linkText("train running status")).click();
+	Thread.sleep(2000);
+	
+	 //click on profile
+	 driver.findElement(By.xpath("//span[@class='icon icon-arrow-down down-arrow']")).click();
+	 
+	//click on signin/singup
+	driver.findElement(By.xpath("//button[text()='SignUp / Signin']")).click();
+	 
+Thread.sleep(2000);
+	 //enter the phonenumber in the textfield
+driver.findElement(By.className("num_input")).sendKeys("9087654321");
+	
+	 
+	 
+}
+}
