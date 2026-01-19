@@ -1,0 +1,36 @@
+Assignments 6:
+=============
+->Visit cricbuzz.com
+->click on matches
+->click on first match
+->Print all batters names
+===========================
+package assignment;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Cricbuzz {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		//visit cricbuzz.com
+		driver.get("https://www.cricbuzz.com/");
+		Thread.sleep(2000);
+		
+		//click on matches
+		driver.findElement(By.xpath("//a[@title='All Matches']")).click();
+		
+		//click on first match
+		driver.findElement(By.xpath("//a[text()='Live']/.././.."));
+		driver.findElement(By.xpath("(//a[text()='Live']/.././..//span[text()='Live Score'])[1]")).click();
+		
+		//print the batters names
+		String b1 = driver.findElement(By.xpath("(//a[contains(@title,'View Profile Of ')])[1]")).getText();
+		String b2 = driver.findElement(By.xpath("(//a[contains(@title,'View Profile Of ')])[2]")).getText();
+		System.out.println(b1);
+		System.out.println(b2);	
+		}
+	
+}
