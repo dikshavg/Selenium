@@ -1,0 +1,141 @@
+Scrolling:
+==========
+1)ScrollTillBottom:
+===================
+
+package scrolling;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ScrollTillBottom {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.cricbuzz.com/");
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		//scrollTillBottom
+		js.executeScript("(window.scrollTo(0,document.body.scrollHeight))");
+		//scrollTillTop
+		js.executeScript("(window.scrollTo(0,-document.body.scrollHeight))");
+		
+	}
+}
+==============================================================================================
+2)ScrollToView:
+===============
+package scrolling;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ToLeranScollIntoView {
+	public static void main(String[] args) {
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.cricbuzz.com/");
+		WebElement ele = driver.findElement(By.xpath("//button[text()='More Videos']"));
+		JavascriptExecutor js= (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].scrollIntoView(false)",ele);
+		
+
+}
+}
+====================================================================================================
+3)Without using Refresh:
+========================
+package scrolling;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class WihtoutusingRefresh {
+
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.cricbuzz.com/");
+        //refresh without using refresh()
+
+		JavascriptExecutor js= (JavascriptExecutor)driver;
+		js.executeScript("history.go()");
+}
+}
+======================================================================================================
+4)Without using sendkeys:
+=========================
+package scrolling;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Withoutusingsendkeys {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.cricbuzz.com/");
+        //click on profile icon
+		WebElement ele = driver.findElement(By.xpath("//span[@class='wb:hidden block']"));
+		JavascriptExecutor js= (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click()",ele);
+		//send the dummy input in login(without using sendkeys())
+		 ele = driver.findElement(By.xpath("//input[@placeholder='Email Id/ Mobile Number']"));
+	     js= (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].value='dvg123@gmail.com'",ele);
+		
+}
+}
+===============================================================================================
+5)Without click():
+==================
+package scrolling;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ClickOperationwithoutclick {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.cricbuzz.com/");
+        //if it is web elements they use arguments
+		WebElement ele = driver.findElement(By.xpath("//button[text()='More News']"));
+		JavascriptExecutor js= (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click()",ele);
+		
+}
+}
+===========================================================================================
+6)ScrollTo() and ScrollBy():
+============================
+package scrolling;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ToLearnScrollToandScrollBy {
+
+	public static void main(String[] args) {
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.cricbuzz.com/");
+		JavascriptExecutor js= (JavascriptExecutor)driver;
+		js.executeScript("window.scrollTo(0,2000)");
+		js.executeScript("window.scrollBy(0,4000)");
+	}
+}
+
+
+
