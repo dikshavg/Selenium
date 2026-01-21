@@ -1,0 +1,48 @@
+Assignment 7:
+===============
+->visit demo.automationtesting.in/Frames.html
+->Enter Automation inside text field
+->click on iframe within an iframe
+->Enter selenium
+
+package assignment;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Automationtesting {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		//visit automationtesting.com
+		driver.get("https://demo.automationtesting.in/Frames.html");
+		
+		//Enter Automation inside text field
+		driver.switchTo().frame("SingleFrame");
+		driver.findElement(By.xpath("//input[@type='text']")).sendKeys("Automation");
+		
+		//click on iframe within an iframe
+		Thread.sleep(2000);
+		driver.switchTo().parentFrame();
+		driver.findElement(By.xpath("//a[text()='Iframe with in an Iframe']")).click();
+		
+		//Enter Selenium
+
+        //  Locate the outer iframe
+        WebElement outerFrame = driver.findElement(By.xpath("//div[@id='Multiple']//iframe"));
+
+        //  Switch to the outer iframe
+        driver.switchTo().frame(outerFrame);
+
+        // Then locate the inner iframe inside the outer iframe
+        WebElement innerFrame = driver.findElement(By.xpath("//iframe"));
+
+        // Switch to the inner iframe
+        driver.switchTo().frame(innerFrame);
+	
+		driver.findElement(By.xpath("//input[@type='text']")).sendKeys("Selenium");
+		
+	}
+}
