@@ -1,0 +1,35 @@
+Assignment 8:
+=============
+->open google
+->and click on youtube
+
+
+package execution;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class ClassAssignment3 {
+	
+	public static void main(String[] args) {
+		WebDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.google.com/");
+		//mouse over on burger icon
+		Actions act= new Actions(driver);
+		WebElement icon = driver.findElement(By.xpath("//a[@aria-label='Google apps']"));
+		act.moveToElement(icon).build().perform();
+		driver.findElement(By.xpath("//a[@aria-label='Google apps']")).click();
+		
+		//click on youtube
+		driver.switchTo().frame("app");
+		driver.findElement(By.xpath("//span[text()='YouTube']")).click();
+		
+		//take the screenshot of yt
+		
+		
+}
+}
