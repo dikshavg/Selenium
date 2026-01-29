@@ -1,0 +1,228 @@
+POPUPS:
+=======
+1)JavaScript Popups:
+====================
+package popups;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ToLearnJavaScriptPopups {
+	public static void main(String[] args)  {
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demowebshop.tricentis.com/login");
+		//click on search directly without passing input
+		driver.findElement(By.xpath("//input[@type='submit']")).click();
+		//to accept popups
+		
+		Alert popup = driver.switchTo().alert();//accept
+		String text=popup.getText();
+		System.out.println(text);
+		popup.accept();
+
+}
+}
+-------------------------------------------------------------------------------------------
+Promptpopups:
+-------------
+package popups;
+
+import java.time.Duration;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Promptpopup1 {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.w3schools.com/js/tryit.asp?filename=tryjs_prompt");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		//click on tryit
+		driver.switchTo().frame("iframeResult");
+		driver.findElement(By.xpath("//button[text()='Try it']")).click();
+		
+		Thread.sleep(2000);
+
+		//to pass the values
+		Alert popups = driver.switchTo().alert();
+		popups.sendKeys("Dikshavg");
+}
+}
+================================================================================================
+2)HiddenDivision popups:
+========================
+package popups;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class ToLearnHiddenDivision {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://demoapps.qspiders.com/ui/alert?sublist=0");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		
+		//click on ui testing concept
+				driver.findElement(By.xpath("//p[text()='UI Testing Concepts']")).click();
+				
+				//click on popups dropdown
+				driver.findElement(By.xpath("//section[text()='Popups']")).click();
+				
+				//click on hidden division
+				driver.findElement(By.xpath("//section[text()='Hidden division']")).click();
+				
+				//click on add customer
+				driver.findElement(By.xpath("//button[text()='Add Customer']")).click();
+			
+				//add details
+				driver.findElement(By.xpath("//input[@id='customerName']")).sendKeys("Diksha");
+				driver.findElement(By.xpath("//input[@id='customerEmail']")).sendKeys("dvg@154637");
+				 WebElement city = driver.findElement(By.xpath("//select[@id='prod]"));
+				    Select sel=new Select(city);
+				    sel.selectByVisibleText("Mobile");
+			
+				driver.findElement(By.xpath("//textarea[@id='message']")).sendKeys("hello guys");
+				Thread.sleep(2000);
+				driver.findElement(By.xpath("//button[text()='Cancel']")).click();
+	}
+}
+================================================================================================
+3)File Upload popups:
+====================
+package popups;
+
+import java.io.File;
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ToLeranFileuploads {
+
+	
+	public static void main(String[] args) {
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.naukri.com/registration/createAccount");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+		
+		driver.findElement(By.xpath("//h2[text()=\"I'm experienced\"]")).click();
+		//JavascriptExecutor js= (JavascriptExecutor)driver;
+		//js.executeScript("arguments[0].scrollIntoView(true)",ele);
+		
+		File f=new File("C:\\Users\\ASUS\\Downloads\\NameDIKSHA VG 8951056631 (1) (1).pdf");
+		 String resume = f.getAbsolutePath();
+		
+		//click on Upload resume button
+		driver.findElement(By.xpath("//input[@type='file']")).sendKeys(resume);
+		
+				
+	}
+}
+========================================================================================
+4)file download popups
+====================================================================================
+5)Aunthenication popups:
+========================
+package popups;
+
+import java.time.Duration;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ToHandleAuthenicationpopup {
+public static void main(String[] args) {
+	WebDriver driver= new ChromeDriver();
+	driver.manage().window().maximize();
+	driver.get("https://the-internet.herokuapp.com/basic_auth");
+	//to handle Authenication popup
+	driver.navigate().to("https://admin:admin@the-internet.herokuapp.com/basic_auth");
+	
+	
+	
+	
+}
+}
+============================================================================================
+6)Notification popups:
+=====================
+package popups;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class NotificationPopup {
+	public static void main(String[] args) {
+		ChromeOptions opt= new ChromeOptions();
+		opt.addArguments("--disable-notifications");
+		WebDriver driver=new ChromeDriver(opt);
+		
+				driver.get("https://demoapps.qspiders.com/ui/browserNot?sublist=0");
+				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+				
+				//click on ui testing concept
+				driver.findElement(By.xpath("//p[text()='UI Testing Concepts']")).click();
+				
+				//click on popups dropdown
+				driver.findElement(By.xpath("//section[text()='Popups']")).click();
+				
+				//Click on notification 
+				driver.findElement(By.xpath("//section[text()='Notifications']")).click();
+				
+				//click on notification button
+				driver.findElement(By.xpath("//button[text()='Notification']")).click();
+	}
+
+}
+==========================================================================================
+7)ChildWindow popups:
+====================
+package popups;
+
+import java.time.Duration;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ChildWindowpopup {
+	public static void main(String[] args) {
+	WebDriver driver= new ChromeDriver();
+	driver.manage().window().maximize();
+	driver.get("https://shoppersstack.com/products_page/34");
+	driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+	
+	
+	//to handle child window popups
+	driver.findElement(By.id("compare")).click();
+	Set<String> allWindowIds = driver.getWindowHandles();
+	for(String id:allWindowIds)
+	{
+		driver.switchTo().window(id);
+		driver.close();
+	}
+	}
+}
+
